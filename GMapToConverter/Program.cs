@@ -43,16 +43,17 @@ namespace GMapToConverter
                                                 sec.Posts.Select(p => string.Format(CultureInfo.InvariantCulture.NumberFormat,
                                                                                     "{0},{1},0",
                                                                                     p.Point.Longitude, p.Point.Latitude))))))),
-                            map.Sections.SelectMany(sec =>
-                                sec.Posts.Select(p =>
-                                new XElement("Placemark",
-                                    new XElement("name", string.Format("{0} км", p.Ordinate / 1000.0)),
-                                    new XElement("description", string.Format("{0:N0} м", p.Ordinate)),
-                                    new XElement("styleUrl", "#" + GetStyleName(sec)),
-                                    new XElement("Point",
-                                        new XElement("coordinates", string.Format(CultureInfo.InvariantCulture.NumberFormat,
-                                                                                    "{0},{1},0",
-                                                                                    p.Point.Longitude, p.Point.Latitude))))))
+                            !args.Contains("/k") ? null :
+                                map.Sections.SelectMany(sec =>
+                                    sec.Posts.Select(p =>
+                                    new XElement("Placemark",
+                                        new XElement("name", string.Format("{0} км", p.Ordinate / 1000.0)),
+                                        new XElement("description", string.Format("{0:N0} м", p.Ordinate)),
+                                        new XElement("styleUrl", "#" + GetStyleName(sec)),
+                                        new XElement("Point",
+                                            new XElement("coordinates", string.Format(CultureInfo.InvariantCulture.NumberFormat,
+                                                                                        "{0},{1},0",
+                                                                                        p.Point.Longitude, p.Point.Latitude))))))
                         )));
             KMap.Save(KMapPath);
 
