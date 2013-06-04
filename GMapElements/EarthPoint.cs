@@ -21,6 +21,16 @@ namespace GMapElements
         /// <remarks>По X</remarks>
         public Double Longitude { get; set; }
 
+        internal Double LatitudeRad
+        {
+            get { return Latitude * Math.PI / 180.0; }
+        }
+
+        internal Double LongitudeRad
+        {
+            get { return Longitude * Math.PI / 180.0; }
+        }
+
         /// <summary>
         /// Создаёт точку с указанной широтой и долготой
         /// </summary>

@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMapToConverter", "GMapToCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMapElements", "GMapElements\GMapElements.csproj", "{87D32B78-3566-4D13-9B15-2B369E04A325}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trackogen", "Trackogen\Trackogen.csproj", "{552EE22D-6A71-451D-8219-873C1BE3D661}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{87D32B78-3566-4D13-9B15-2B369E04A325}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{87D32B78-3566-4D13-9B15-2B369E04A325}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{87D32B78-3566-4D13-9B15-2B369E04A325}.Release|x86.ActiveCfg = Release|Any CPU
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Debug|x86.ActiveCfg = Debug|x86
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Debug|x86.Build.0 = Debug|x86
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Release|Any CPU.ActiveCfg = Release|x86
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Release|Mixed Platforms.Build.0 = Release|x86
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Release|x86.ActiveCfg = Release|x86
+		{552EE22D-6A71-451D-8219-873C1BE3D661}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
