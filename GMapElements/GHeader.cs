@@ -5,13 +5,9 @@ using System.Text;
 
 namespace GMapElements
 {
+    [GLength(9)]
     public class GHeader : GElement
     {
-        public override int Length
-        {
-            get { return 9; }
-        }
-
         public int PostsCount { get; set; }
 
         protected override void FillWithBytes(byte[] Data)

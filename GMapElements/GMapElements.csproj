@@ -42,11 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EarthPoint.cs" />
+    <Compile Include="GContainer.cs" />
     <Compile Include="GElement.cs" />
     <Compile Include="GHeader.cs" />
+    <Compile Include="GLengthAttribude.cs" />
     <Compile Include="GMap.cs" />
+    <Compile Include="GObject.cs" />
     <Compile Include="GPost.cs" />
     <Compile Include="GSection.cs" />
+    <Compile Include="GTrack.cs" />
     <Compile Include="Mercator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
