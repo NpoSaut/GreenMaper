@@ -43,6 +43,18 @@ namespace GMapElements
             res.FillFromStream(str);
             return res;
         }
+        protected virtual Byte[] GetBytes()
+        {
+            var buff = new Byte[DataLength];
+            Placements.BitLoader.Decode(this, buff);
+            return buff;
+        }
+        public virtual void WriteTo(Stream str)
+        {
+            var buff = GetBytes();
+            Console.Write("Пишем в адрес {1:X8} объект {0}", this, str.Position);
+            str.Write(buff, 0, buff.Length);
+        }
 
         protected static Byte[] ByteSubseq(Byte[] data, int startIndex, int getLength, int echoLength)
         {

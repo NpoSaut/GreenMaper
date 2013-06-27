@@ -71,6 +71,10 @@ namespace GMapElements
             AlsnFreq = AlsnFromCode(Data[6]);
             Name = Encoding.GetEncoding(1251).GetString(Data, 10, 8).Trim();
         }
+        protected override byte[] GetBytes()
+        {
+            throw new NotImplementedException();
+        }
 
         private AlsnFrequncy AlsnFromCode(int alsnCode)
         {

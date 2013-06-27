@@ -42,5 +42,15 @@ namespace GMapElements
             }
             DataStream.Seek(_StartPosition, SeekOrigin.Begin);
         }
+
+        public sealed override void WriteTo(Stream DataStream)
+        {
+            if (!DataStream.CanSeek) throw new ArgumentException("Поток данных должен поддерживать функцию поиска", "DataStream");
+            using (var d = new Deferr(DataStream))
+            {
+                d.DeferredWrite(GChildrenLinkAttribute.Get(this.GetType()).ChildrenLinkOffset, Children);
+                base.WriteTo(DataStream);
+            }
+        }
     }
 }

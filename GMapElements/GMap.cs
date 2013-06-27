@@ -21,6 +21,11 @@ namespace GMapElements
                 Sections = LoadSections(FromStream, h.PostsCount).ToList()
             };
         }
+        public void Save(Stream ToStream)
+        {
+            Header.WriteTo(ToStream);
+            WriteSections(ToStream);
+        }
 
         private static IEnumerable<GSection> LoadSections(Stream str, int PostsCount)
         {
@@ -30,6 +35,16 @@ namespace GMapElements
                 var sec = new GSection() { Posts = LoadPosts(str).ToList() };
                 pc += sec.Posts.Count;
                 yield return sec;
+            }
+        }
+        private void WriteSections(Stream str)
+        {
+            foreach (var sec in Sections)
+            {
+                foreach (var post in sec.Posts)
+                {
+                    post.WriteTo(str);
+                }
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GMapElements.Placements;
 
 namespace GMapElements
 {
@@ -9,8 +10,10 @@ namespace GMapElements
     public enum PositionInSection { Middle = 0, Start = 1, End = 2 }
 
     [GLength(15)]
+    [GChildrenLink(12)]
     public class GPost : GContainer<GTrack>
     {
+        [IntPlacement(0, 3)]
         /// <summary>
         /// Линейная ордината
         /// </summary>
@@ -44,6 +47,16 @@ namespace GMapElements
 
             this.ChildrenStartAdress = SubInt(Data, 12, 3) + 1;
         }
+        protected override byte[] GetBytes()
+        {
+            var buff = base.GetBytes();
+
+            Buffer.BlockCopy(BitConverter.GetBytes((Int32)(Point.Latitude * Math.PI / (10e-9 * 180))), 0, buff, 4, 4);
+            Buffer.BlockCopy(BitConverter.GetBytes((Int32)(Point.Latitude * Math.PI / (10e-9 * 180))), 0, buff, 8, 4);
+
+            return buff;
+        }
+
         private OrdinateDirection DecodeDirection(int DirectionCode)
         {
             switch (DirectionCode)

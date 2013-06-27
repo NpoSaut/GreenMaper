@@ -29,5 +29,10 @@ namespace GMapElements
         {
             return string.Format("{0} | {1}", Number, string.Join(", ", Objects));
         }
+
+        protected override byte[] GetBytes()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

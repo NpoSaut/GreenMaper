@@ -2,18 +2,20 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{87D32B78-3566-4D13-9B15-2B369E04A325}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{44917819-C15D-4968-A106-5BF670512736}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GMapElements</RootNamespace>
-    <AssemblyName>GMapElements</AssemblyName>
+    <RootNamespace>GMapConsoleEditer</RootNamespace>
+    <AssemblyName>GMapConsoleEditer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,7 +24,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -38,30 +41,16 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeferredBlock.cs" />
-    <Compile Include="EarthPoint.cs" />
-    <Compile Include="GChildrenLinkAttribute.cs" />
-    <Compile Include="GContainer.cs" />
-    <Compile Include="GElement.cs" />
-    <Compile Include="GHeader.cs" />
-    <Compile Include="GLengthAttribude.cs" />
-    <Compile Include="GMap.cs" />
-    <Compile Include="GObject.cs" />
-    <Compile Include="GPost.cs" />
-    <Compile Include="GSection.cs" />
-    <Compile Include="GTrack.cs" />
-    <Compile Include="Mercator.cs" />
-    <Compile Include="Placements\BitLoader.cs" />
-    <Compile Include="Placements\BitPlacementAttribute.cs" />
-    <Compile Include="Placements\BoolPlacementAttribute.cs" />
-    <Compile Include="Placements\BytePlacementAttribute.cs" />
-    <Compile Include="Placements\EnumPlacementAttribute.cs" />
-    <Compile Include="Placements\IntPlacementAttribute.cs" />
-    <Compile Include="Placements\PlacementAttribute.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GMapElements\GMapElements.csproj">
+      <Project>{87D32B78-3566-4D13-9B15-2B369E04A325}</Project>
+      <Name>GMapElements</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

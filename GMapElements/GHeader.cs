@@ -12,7 +12,14 @@ namespace GMapElements
 
         protected override void FillWithBytes(byte[] Data)
         {
-            this.PostsCount = BitConverter.ToInt16(Data, 2);
+            this.PostsCount = BitConverter.ToUInt16(Data, 2);
+        }
+
+        protected override byte[] GetBytes()
+        {
+            var buff = new Byte[DataLength];
+            Buffer.BlockCopy(BitConverter.GetBytes((UInt16)PostsCount), 0, buff, 2, 2);
+            return buff;
         }
     }
 }
