@@ -21,15 +21,30 @@ namespace GMapElements
         /// <remarks>По X</remarks>
         public Double Longitude { get; set; }
 
-        internal Double LatitudeRad
+
+
+        #region Перевод в радианы
+        /// <summary>
+        /// Широта (в радианах)
+        /// </summary>
+        /// <remarks>По Y</remarks>
+        public Double LatitudeRad
         {
             get { return Latitude * Math.PI / 180.0; }
+            set { Latitude = value * 180.0 / Math.PI; }
         }
-
-        internal Double LongitudeRad
+        /// <summary>
+        /// Долгота (в радианах)
+        /// </summary>
+        /// <remarks>По X</remarks>
+        public Double LongitudeRad
         {
             get { return Longitude * Math.PI / 180.0; }
+            set { Longitude = value * 180.0 / Math.PI; }
         }
+        #endregion
+
+
 
         /// <summary>
         /// Создаёт точку с указанной широтой и долготой

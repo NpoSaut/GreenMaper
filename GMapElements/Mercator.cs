@@ -31,7 +31,7 @@ namespace GMapElements
         /// <returns>Расстояние между точками в метрах</returns>
         public static Double DistanceTo(this EarthPoint p1, EarthPoint p2)
         {
-            return c * 2 * Math.Asin(Math.Sqrt(EstimateDistances(p1, p2)));
+            return 2 * c * Math.Asin(Math.Sqrt(EstimateDistances(p1, p2)));
         }
 
         public static Double EstimateDistances(this EarthPoint p1, EarthPoint p2)
