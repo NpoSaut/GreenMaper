@@ -73,7 +73,15 @@ namespace GMapElements
         }
         protected override byte[] GetBytes()
         {
-            throw new NotImplementedException();
+            var buff = new Byte[DataLength];
+
+            buff[0] = (byte)Type;
+            Buffer.BlockCopy(BitConverter.GetBytes(Length), 0, buff, 1, 2);
+            Buffer.BlockCopy(BitConverter.GetBytes(Ordinate), 0, buff, 7, 3);
+            buff[6] = (byte)CodeFromAlsn(AlsnFreq);
+            Buffer.BlockCopy(
+
+            return buff;
         }
 
         private AlsnFrequncy AlsnFromCode(int alsnCode)
@@ -85,6 +93,18 @@ namespace GMapElements
                 case (2): return AlsnFrequncy.Alsn75;
                 case (3): return AlsnFrequncy.NoAlsn;
                 default: return AlsnFrequncy.Unknown;
+            }
+        }
+
+        private int CodeFromAlsn(AlsnFrequncy Alsn)
+        {
+            switch (Alsn)
+            {
+                case AlsnFrequncy.Alsn25: return 0;
+                case AlsnFrequncy.Alsn50: return 1;
+                case AlsnFrequncy.Alsn75: return 2;
+                case AlsnFrequncy.NoAlsn: return 3;
+                default: return -1;
             }
         }
 

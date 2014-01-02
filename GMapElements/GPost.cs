@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GMapElements.Placements;
 
 namespace GMapElements
 {
@@ -13,7 +12,6 @@ namespace GMapElements
     [GChildrenLink(12)]
     public class GPost : GContainer<GTrack>
     {
-        [IntPlacement(0, 3)]
         /// <summary>
         /// Линейная ордината
         /// </summary>
@@ -49,7 +47,11 @@ namespace GMapElements
         }
         protected override byte[] GetBytes()
         {
-            var buff = base.GetBytes();
+            var buff = new Byte[DataLength];
+
+            Buffer.BlockCopy(BitConverter.GetBytes(Ordinate), 0, buff, 0, 3);
+
+            buff[3] = (byte)(((int)Position & 0x03) | (EncodeDirection(Direction) << 7));
 
             Buffer.BlockCopy(BitConverter.GetBytes((Int32)(Point.Latitude * Math.PI / (10e-9 * 180))), 0, buff, 4, 4);
             Buffer.BlockCopy(BitConverter.GetBytes((Int32)(Point.Latitude * Math.PI / (10e-9 * 180))), 0, buff, 8, 4);
@@ -63,6 +65,15 @@ namespace GMapElements
             {
                 case 0: return OrdinateDirection.Increasing;
                 case 1: return OrdinateDirection.Decreasing;
+            }
+            throw new ArgumentException("Недопустимое значение кода направления", "DirectionCode");
+        }
+        private int EncodeDirection(OrdinateDirection Direction)
+        {
+            switch (Direction)
+            {
+                case OrdinateDirection.Increasing : return 0;
+                case OrdinateDirection.Decreasing : return 1;
             }
             throw new ArgumentException("Недопустимое значение кода направления", "DirectionCode");
         }

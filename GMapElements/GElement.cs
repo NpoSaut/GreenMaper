@@ -43,12 +43,7 @@ namespace GMapElements
             res.FillFromStream(str);
             return res;
         }
-        protected virtual Byte[] GetBytes()
-        {
-            var buff = new Byte[DataLength];
-            Placements.BitLoader.Decode(this, buff);
-            return buff;
-        }
+        protected abstract Byte[] GetBytes();
         public virtual void WriteTo(Stream str)
         {
             var buff = GetBytes();

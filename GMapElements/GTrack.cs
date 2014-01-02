@@ -6,6 +6,7 @@ using System.Text;
 namespace GMapElements
 {
     [GLength(5)]
+    [GChildrenLink(2)]
     public class GTrack : GContainer<GObject>
     {
         public int Number { get; set; }
@@ -32,7 +33,11 @@ namespace GMapElements
 
         protected override byte[] GetBytes()
         {
-            throw new NotImplementedException();
+            var buff = new Byte[DataLength];
+            buff[0] = (byte)Number;
+            buff[1] = (byte)ChildrenCount;
+            Buffer.BlockCopy(BitConverter.GetBytes(ChildrenStartAdress), 0, buff, 2, 3);
+            return buff;
         }
     }
 }

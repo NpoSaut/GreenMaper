@@ -54,13 +54,6 @@
     <Compile Include="GSection.cs" />
     <Compile Include="GTrack.cs" />
     <Compile Include="Mercator.cs" />
-    <Compile Include="Placements\BitLoader.cs" />
-    <Compile Include="Placements\BitPlacementAttribute.cs" />
-    <Compile Include="Placements\BoolPlacementAttribute.cs" />
-    <Compile Include="Placements\BytePlacementAttribute.cs" />
-    <Compile Include="Placements\EnumPlacementAttribute.cs" />
-    <Compile Include="Placements\IntPlacementAttribute.cs" />
-    <Compile Include="Placements\PlacementAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
